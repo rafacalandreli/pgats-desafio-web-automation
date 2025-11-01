@@ -1,0 +1,39 @@
+# Arquivos de Dependências (O MAIS IMPORTANTE!)
+/node_modules
+
+# Arquivos de Log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Arquivos de Sistema Operacional
+.DS_Store
+Thumbs.db
+
+# Configurações de Editores de Código
+.idea/
+.vscode/
+*.swp
+
+# Arquivos de Ambiente (MUITO IMPORTANTE!)
+# Contêm senhas, chaves de API e segredos
+.env
+.env.local
+.env.*.local
+cypress.env.json
+
+# == Cypress ==
+# Ignora os artefatos gerados durante os testes
+/cypress/videos/
+/cypress/screenshots/
+/cypress/downloads/
+
+# == Relatórios de Teste ==
+/cypress/reports/
+/mochawesome-report/
+/allure-results/
+/allure-report/
+
+# Ignora o arquivo de cache do Cypress
+.cypress-cache
