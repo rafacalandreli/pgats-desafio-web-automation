@@ -1,30 +1,56 @@
-name: Web E2E Tests
+# Workflow para executar testes End-to-End com Cypress e gerar relatórios Allure
+name: E2E Cypress Tests
 
-on: 
+on:
+  # Executa em pushes para a branch 'main'
+  push:
+    branches: [ "main" ]
+  # Executa em pull requests direcionados para a branch 'main'
+  pull_request:
+    branches: [ "main" ]
+  # Permite a execução manual do workflow
   workflow_dispatch:
 
 jobs:
   e2e-tests:
+    # Usa a imagem mais recente do Ubuntu para o runner
     runs-on: ubuntu-latest
-    steps: 
-      - name: Checkout
+
+    steps:
+      # 1. Faz o checkout do código do repositório
+      - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2. Configura o ambiente Node.js e habilita o cache do npm
+      # O cache acelera as instalações em execuções futuras
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      # 3. Instala as dependências do projeto de forma limpa
+      # 'npm ci' é mais rápido e seguro para ambientes de CI, pois usa o package-lock.json
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Run Cypress tests
-        run: npm run cy:run
-        continue-on-error: true
+      # 4. Executa os testes do Cypress
+      # O comando é pego do script 'test:ci' no package.json
+      - name: Run Cypress E2E tests
+        run: npm run test:ci
 
+      # 5. Gera o relatório Allure, mesmo que os testes falhem
+      # 'if: always()' garante que esta etapa sempre será executada
       - name: Generate Allure Report
         if: always()
-        run: npm run allure:generate
+        run: npm run report:generate
 
+      # 6. Faz o upload do relatório Allure como um artefato do workflow
+      # Isso permite baixar e visualizar o relatório após a execução
       - name: Upload Allure Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
           path: allure-report
-          retention-days: 5
+          retention-days: 7 # O relatório ficará disponível por 7 dias
