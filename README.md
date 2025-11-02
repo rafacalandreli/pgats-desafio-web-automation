@@ -1,5 +1,7 @@
 # Projeto de Automação de Testes Web com Cypress
 
+[![E2E Cypress Tests](https://github.com/rafacalandreli/pgats-desafio-web-automation/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/rafacalandreli/pgats-desafio-web-automation/actions/workflows/main.yml)
+
 Este projeto consiste na automação de testes End-to-End para a aplicação web [Automation Exercise](https://automationexercise.com/), como parte do Trabalho de Conclusão da disciplina de Automação de Testes Web.
 
 O framework foi desenvolvido utilizando Cypress e segue as melhores práticas de mercado para garantir que os testes sejam robustos, manuteníveis e escaláveis.
