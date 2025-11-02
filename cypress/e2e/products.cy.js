@@ -1,4 +1,3 @@
-/// <reference types="cypress" />
 import ProductPage from '../pages/pom/ProductPage.js';
 import ProductAssert from '../pages/asserts/ProductAssert.js';
 

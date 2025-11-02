@@ -1,4 +1,3 @@
-/// <reference types="cypress" />
 import { SELETORES } from '../business/constantes/seletores.js';
 import LoginPage from '../pages/pom/LoginPage.js';
 

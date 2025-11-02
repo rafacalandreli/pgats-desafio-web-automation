@@ -1,12 +1,10 @@
-/// <reference types="cypress" />
 import { faker } from "@faker-js/faker";
-import { MENSAGENS } from "../business/constantes/mensagens.js";
 import LoginPage from "../pages/pom/LoginPage.js";
 import RegisterPage from "../pages/pom/RegisterPage.js";
 import LoginAssert from "../pages/asserts/LoginAssert.js";
 import RegisterAssert from "../pages/asserts/RegisterAssert.js";
 import { getFullUser } from "../business/factories/userFactory.js";
-import { SELETORES } from "../business/constantes/seletores.js";
+
 
 context("Testes de Autenticação", () => {
     beforeEach(() => {

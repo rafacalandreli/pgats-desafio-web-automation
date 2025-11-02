@@ -1,4 +1,3 @@
-/// <reference types="cypress" />
 import { faker } from '@faker-js/faker';
 import { getFullUser } from '../business/factories/userFactory.js';
 import LoginPage from '../pages/pom/LoginPage.js';

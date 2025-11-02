@@ -3,13 +3,17 @@ import { MENSAGENS } from '../../business/constantes/mensagens.js';
 import { URLS } from '../../business/constantes/urls.js';
 
 class CheckoutPage {
+    /**
+     * Visita a página de checkout e valida o carregamento.
+     */
     visit() {
         cy.visit(URLS.CHECKOUT_PAGE);
         cy.validatePageLoad(URLS.CHECKOUT_PAGE, 'Automation Exercise - Checkout');
     }
 
     /**
-     * @param {string} comment
+     * Adiciona um comentário e clica no botão para finalizar o pedido.
+     * @param {string} comment - O comentário a ser adicionado ao pedido.
      */
     placeOrder(comment) {
         if (comment) {
@@ -35,13 +39,11 @@ class CheckoutPage {
     }
 
     /**
+     * Clica no botão para confirmar o pagamento.
      */
     confirmPayment() {
         cy.get(SELETORES.PAYMENT_SUBMIT).click();
     }
-
-    /**
-     */
 }
 
 export default new CheckoutPage();

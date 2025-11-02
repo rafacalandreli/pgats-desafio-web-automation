@@ -1,4 +1,3 @@
-/// <reference types="cypress" />
 import { getRandomEmail } from '../business/factories/userFactory.js';
 import SubscriptionPage from '../pages/pom/SubscriptionPage.js';
 import SubscriptionAssert from '../pages/asserts/SubscriptionAssert.js';

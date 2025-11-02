@@ -7,13 +7,12 @@ class ProductPage {
      */
     visit() {
         cy.visit(URLS.PRODUCTS_PAGE);
-        // Assumindo o título da página. Ajuste se necessário.
         cy.validatePageLoad(URLS.PRODUCTS_PAGE, 'Automation Exercise - All Products');
     }
 
     /**
-     * Realiza uma busca por um produto.
-     * @param {string} productName 
+     * Realiza uma busca por um produto na barra de pesquisa.
+     * @param {string} productName - O nome ou termo a ser pesquisado.
      */
     searchProduct(productName) {
         cy.get(SELETORES.SEARCH_PRODUCT).type(productName);
@@ -21,16 +20,15 @@ class ProductPage {
     }
 
     /**
-     * Adiciona um produto ao carrinho.
-     * Nota: Este método pode precisar de ajuste dependendo de como os produtos são listados.
-     * @param {string} productName - O nome do produto a ser adicionado.
+     * Adiciona um produto específico ao carrinho a partir da lista de produtos.
+     * Utiliza uma busca pelo nome do produto para localizar o botão 'Add to cart' correspondente.
+     * @param {string} productName - O nome exato do produto a ser adicionado.
      */
     addToCart(productName) {
-        // Este é um exemplo mais robusto que o seletor original
         cy.contains('.productinfo', productName)
           .parent()
           .find('a.add-to-cart')
-          .first() // Garante que apenas um elemento será clicado
+          .first()
           .click({ force: true });
     }
 

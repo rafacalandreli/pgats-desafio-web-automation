@@ -1,4 +1,3 @@
-/// <reference types="cypress" />
 import { faker } from '@faker-js/faker';
 import ContactPage from '../pages/pom/ContactPage.js';
 import ContactAssert from '../pages/asserts/ContactAssert.js';
