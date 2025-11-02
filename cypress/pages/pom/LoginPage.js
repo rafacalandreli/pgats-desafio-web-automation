@@ -1,7 +1,5 @@
 import { SELETORES } from '../../business/constantes/seletores.js';
 import { URLS } from '../../business/constantes/urls.js';
-import { MENSAGENS } from '../../business/constantes/mensagens.js';
-
 class LoginPage {
     /**
      * Visits the login page.

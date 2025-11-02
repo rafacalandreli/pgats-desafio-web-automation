@@ -1,10 +1,7 @@
 import { SELETORES } from '../../business/constantes/seletores.js';
 import { URLS } from '../../business/constantes/urls.js';
 
-/**
- * @class HomePage
- * @description Representa a página inicial e seus componentes globais, como o cabeçalho.
- */
+
 class HomePage {
     /**
      * Visita a página inicial e valida seu carregamento.

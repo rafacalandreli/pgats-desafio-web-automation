@@ -1,5 +1,4 @@
 import { SELETORES } from '../../business/constantes/seletores.js';
-import { MENSAGENS } from '../../business/constantes/mensagens.js';
 
 class RegisterPage {
     /**
