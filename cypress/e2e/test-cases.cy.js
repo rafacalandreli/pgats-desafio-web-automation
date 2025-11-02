@@ -1,17 +1,13 @@
-import { SELETORES } from '../business/constantes/seletores.js';
-import LoginPage from '../pages/pom/LoginPage.js';
+import testCaseAssert from '../pages/asserts/TestCaseAssert.js';
+import HomePage from '../pages/pom/HomePage.js';
 
 describe("Test Case 7: Verify Test Cases Page", () => {
   beforeEach(() => {
-    LoginPage.visit();
+    HomePage.visit();
+    HomePage.navigateToTestCase();
   });
 
   it("Test Case 7: Test Case", () => {
-    cy.get(SELETORES.LINK_LOGIN).should('be.visible');
-    cy.navigateForTestCase();
-
-    cy.url().should('include', '/test_cases');
-    cy.get(SELETORES.TEST_CASES_TITLE).should('be.visible').and('have.text', 'Test Cases');
-
+   testCaseAssert.assertPageIsVisible();
   });
 });

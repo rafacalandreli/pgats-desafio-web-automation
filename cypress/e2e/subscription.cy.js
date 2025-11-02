@@ -1,6 +1,6 @@
 import { getRandomEmail } from '../business/factories/userFactory.js';
-import SubscriptionPage from '../pages/pom/SubscriptionPage.js';
-import SubscriptionAssert from '../pages/asserts/SubscriptionAssert.js';
+import subscriptionPage from '../pages/pom/subscriptionPage.js';
+import subscriptionAssert from '../pages/asserts/subscriptionAssert.js';
 
 describe("Testes de Inscrição", () => {
   beforeEach(() => {
@@ -11,9 +11,9 @@ describe("Testes de Inscrição", () => {
     const email = getRandomEmail();
     
     cy.scrollTo('bottom');
-    SubscriptionAssert.assertTitleSuccess();
-    SubscriptionPage.fillEmail(email);
-    SubscriptionPage.submit();
-    SubscriptionAssert.assertSuccess();
+    subscriptionAssert.assertTitleSuccess();
+    subscriptionPage.fillEmail(email);
+    subscriptionPage.submit();
+    subscriptionAssert.assertSuccess();
   });
 });

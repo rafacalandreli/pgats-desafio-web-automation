@@ -1,22 +1,22 @@
-import ProductPage from '../pages/pom/ProductPage.js';
-import ProductAssert from '../pages/asserts/ProductAssert.js';
+import productPage from '../pages/pom/ProductPage.js';
+import productAssert from '../pages/asserts/ProductAssert.js';
 
 describe("Testes de Produtos", () => {
   beforeEach(() => {
-    ProductPage.visit();
+    productPage.visit();
   });
 
   it("Test Case 8: Verify All Products and product detail page", () => {
-    ProductAssert.assertProductListIsVisible();
-    ProductPage.viewProductDetails(0);
-    cy.url().should('include', '/product_details/');
-    ProductAssert.assertProductDetailsAreVisible();
+    productAssert.assertProductListIsVisible();
+    productPage.viewProductDetails(0);
+    productAssert.assertProductDetailsPageIsVisible();
+    productAssert.assertProductDetailsAreVisible();
   });
 
   it("Test Case 9: Search Product", () => {
     const productName = 'Men Tshirt';
 
-    ProductPage.searchProduct(productName);
-    ProductAssert.assertProductIsVisible(productName);
+    productPage.searchProduct(productName);
+    productAssert.assertProductIsVisible(productName);
   });
 });

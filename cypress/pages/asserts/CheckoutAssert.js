@@ -14,8 +14,8 @@ class CheckoutAssert {
      */
     assertOrderPlaced() {
         cy.get(SELETORES.ORDER_PLACED_TITLE)
-          .should('be.visible')
-          .and('contain', MENSAGENS.ORDER_PLACED);
+            .should('be.visible')
+            .and('contain', MENSAGENS.ORDER_PLACED);
     }
 }
 

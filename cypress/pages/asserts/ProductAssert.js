@@ -40,6 +40,13 @@ class ProductAssert {
     assertProductIsVisible(productName) {
         cy.get(SELETORES.PRODUCTS_LIST).contains(productName).should('be.visible');
     }
+
+    /**
+     * Valida que a página de detalhes do produto está sendo exibida.
+     */
+    assertProductDetailsPageIsVisible() {
+        cy.url().should('include', '/product_details/');
+    }
 }
 
 export default new ProductAssert();

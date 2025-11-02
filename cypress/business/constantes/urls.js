@@ -7,6 +7,7 @@ export const URLS = {
     LOGIN_PAGE: '/login',
     LOGOUT_PAGE: '/logout',
     CONTACT_PAGE: '/contact_us',
+    TEST_CASES_PAGE: '/test_cases',
     PRODUCTS_PAGE: '/products',
     CART_PAGE: '/view_cart',
     CHECKOUT_PAGE: '/checkout',

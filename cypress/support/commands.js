@@ -2,13 +2,15 @@ import { SELETORES } from '../business/constantes/seletores.js';
 import { MENSAGENS } from '../business/constantes/mensagens.js';
 
 
+import HomePage from '../pages/pom/HomePage.js';
+
 /**
  * Realiza o fluxo de login completo via UI.
  * @param {string} email - O email do usuário.
  * @param {string} password - A senha do usuário.
  */
 Cypress.Commands.add('login', (email, password) => {
-    cy.get(SELETORES.LINK_LOGIN_MENU).click();
+    HomePage.navigateToLogin();
     cy.get(SELETORES.LOGIN_EMAIL).type(email);
     cy.get(SELETORES.LOGIN_PASSWORD).type(password);
     cy.get(SELETORES.LOGIN_BUTTON).click();
@@ -52,27 +54,6 @@ Cypress.Commands.add('loginViaSession', (email, password) => {
     cy.session([email, password], () => {
         login(email, password);
     });
-});
-
-/**
- * Navega para a página de contato.
- */
-Cypress.Commands.add('navigateForContact', () => {
-    cy.get(SELETORES.LINK_CONTACT).click();
-});
-
-/**
- * Navega para a página de casos de teste.
- */
-Cypress.Commands.add('navigateForTestCase', () => {
-    cy.get(SELETORES.LINK_TEST_CASE).click();
-});
-
-/**
- * Navega para a página de produtos.
- */
-Cypress.Commands.add('navigateForProducts', () => {
-    cy.get(SELETORES.LINK_PRODUCTS).click();
 });
 
 /**

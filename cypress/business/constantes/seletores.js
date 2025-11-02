@@ -10,7 +10,7 @@ export const SELETORES = {
     LINK_CONTACT: 'a[href="/contact_us"]',
     LINK_PRODUCTS: 'a[href="/products"]',
     LINK_CART: 'a[href="/view_cart"]',
-    LINK_TEST_CASE: 'a[href="/test_cases"]',
+    LINK_TEST_CASE: '.navbar-nav > li > a[href="/test_cases"]',
     
     // Formulário de Signup
     SIGNUP_NAME: '[data-qa="signup-name"]',

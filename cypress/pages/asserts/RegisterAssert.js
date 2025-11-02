@@ -3,6 +3,13 @@ import { MENSAGENS } from '../../business/constantes/mensagens.js';
 
 class RegisterAssert {
     /**
+     * Valida que o título 'New User Signup!' está visível.
+     */
+    assertNewUserSignupIsVisible() {
+        cy.get(SELETORES.SIGNUP_FORM_TITLE).should('be.visible');
+    }
+
+    /**
      * Valida que o título do formulário de registro está visível.
      */
     assertRegisterTitleVisible() {

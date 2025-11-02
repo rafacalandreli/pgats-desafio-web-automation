@@ -26,6 +26,14 @@ class LoginAssert {
     assertLoginFormTitleVisible() {
         cy.get(SELETORES.LOGIN_FORM_TITLE).should('contain', MENSAGENS.LOGIN_TITLE);
     }
+
+    /**
+     * Valida que o logout foi bem-sucedido, verificando a URL e a visibilidade do formulário de login.
+     */
+    assertLogoutSuccess() {
+        cy.url().should('include', '/login');
+        this.assertLoginFormTitleVisible();
+    }
 }
 
 export default new LoginAssert();

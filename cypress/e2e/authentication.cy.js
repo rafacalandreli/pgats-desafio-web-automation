@@ -1,40 +1,39 @@
 import { faker } from "@faker-js/faker";
-import LoginPage from "../pages/pom/LoginPage.js";
-import RegisterPage from "../pages/pom/RegisterPage.js";
-import LoginAssert from "../pages/asserts/LoginAssert.js";
-import RegisterAssert from "../pages/asserts/RegisterAssert.js";
+import loginPage from "../pages/pom/LoginPage.js";
+import registerPage from "../pages/pom/RegisterPage.js";
+import loginAssert from "../pages/asserts/LoginAssert.js";
+import registerAssert from "../pages/asserts/RegisterAssert.js";
 import { getFullUser } from "../business/factories/userFactory.js";
 
 
 context("Testes de Autenticação", () => {
+    const user = getFullUser();
+    
     beforeEach(() => {
-        LoginPage.visit();
+        loginPage.visit();
     });
 
     describe("Testes de Autenticação", () => {
         afterEach(() => {
             cy.deleteAccount();
         });
-        it("Test Case 1: Register User", () => {
-            const user = getFullUser();
 
+        it("Test Case 1: Register User", () => {
             cy.signup(user.name, user.email);
 
-            RegisterAssert.assertRegisterTitleVisible();
-            RegisterPage.fillFormAndSubmit(user);
+            registerAssert.assertRegisterTitleVisible();
+            registerPage.fillFormAndSubmit(user);
 
-            RegisterAssert.assertAccountCreatedAndContinue();
-            LoginAssert.assertLoginSuccess(user.name);
+            registerAssert.assertAccountCreatedAndContinue();
+            loginAssert.assertLoginSuccess(user.name);
         });
 
         it("Test Case 2: Login User with correct email and password", () => {
-            const user = getFullUser();
-
             cy.createUserViaApi(user);
 
-            LoginPage.visit();
-            LoginPage.login(user.email, user.password);
-            LoginAssert.assertLoginSuccess(user.name);
+            loginPage.visit();
+            loginPage.login(user.email, user.password);
+            loginAssert.assertLoginSuccess(user.name);
         });
     });
 
@@ -43,29 +42,28 @@ context("Testes de Autenticação", () => {
             const invalidEmail = faker.internet.email();
             const invalidPassword = faker.internet.password();
 
-            LoginPage.login(invalidEmail, invalidPassword);
-            LoginAssert.assertLoginError();
+            loginPage.login(invalidEmail, invalidPassword);
+            loginAssert.assertLoginError();
         });
 
         it("Test Case 4: Logout User", () => {
-            const user = getFullUser();
-
             cy.createUserViaApi(user);
-            LoginPage.visit();
-            LoginPage.login(user.email, user.password);
+            loginPage.visit();
+            loginPage.login(user.email, user.password);
     
-            LoginAssert.assertLoginSuccess(user.name);
+            loginAssert.assertLoginSuccess(user.name);
             
             cy.logout();
-            cy.url().should("include", "/login");
-            LoginAssert.assertLoginFormTitleVisible();
+            loginAssert.assertLogoutSuccess();
         });
+        
         it("Test Case 5: Register User with existing email", () => {
             const user = getFullUser();
             cy.createUserViaApi(user);
-            LoginPage.visit();
+            loginPage.visit();
+            registerAssert.assertNewUserSignupIsVisible();
             cy.signup(user.name, user.email);
-            RegisterAssert.assertEmailExistsError();
+            registerAssert.assertEmailExistsError();
         });
     });
 });
