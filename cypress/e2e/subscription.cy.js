@@ -1,6 +1,6 @@
 import { getRandomEmail } from '../business/factories/userFactory.js';
-import subscriptionPage from '../pages/pom/subscriptionPage.js';
-import subscriptionAssert from '../pages/asserts/subscriptionAssert.js';
+import subscriptionPage from '../pages/pom/SubscriptionPage.js';
+import subscriptionAssert from '../pages/asserts/SubscriptionAssert.js';
 
 describe("Testes de Inscrição", () => {
   beforeEach(() => {
